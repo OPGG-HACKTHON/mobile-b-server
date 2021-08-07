@@ -38,7 +38,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new SecurityResponseAfterFilter();
     }
 
-
     /* AuthenticationManager 외부 사용하기 위해 */
     @Override
     @Bean
@@ -88,6 +87,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         // 허가 항목
                         .antMatchers("/h2-console/**").permitAll()
                         .antMatchers("/api/v1/**").permitAll()
+                        .antMatchers("/socket/**").permitAll()
 
                         // 확인 항목
 //                        .antMatchers("/api/vi/test/auth").hasRole("AUTH")//.authenticated()
