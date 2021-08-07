@@ -76,7 +76,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 * - antMatchers() : 특정 URL 에 대해서 어떻게 인증처리를 할지 결정
                 * - permitAll() : 인증 허용
                 * - authenticated() : 요청내에 스프링 시큐리티 컨텍스트 내에서 인증이 완료되어야 api를 사용할 수 있다. 인증이 되지 않은 요청은 403(Forbidden)
-                * .antMatchers("/api/v1/vocabulary/auth").anonymous() => 유저의 상태가 anonymous 일때 호출 가능
+                * .antMatchers("/api/v1/").anonymous() => 유저의 상태가 anonymous 일때 호출 가능
                 **/
                 /* 인증절차 시작 */
                 .authorizeRequests()
