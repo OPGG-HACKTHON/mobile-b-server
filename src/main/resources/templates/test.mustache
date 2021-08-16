@@ -8,20 +8,55 @@
     <title>Socket Test</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
-
+<input type="text" id="subscribe" value="/topic/message">
+<input type="text" id="send" value="/stream/chat/send">
+<input type="text" id="inviteCode" value="">
+<br>
+<input type="text" id="userKey" value="test1">
+<input type="number" id="positionType" value="1">
+<select id="type">
+    <option value="JOIN">JOIN</option>
+    <option value="CHAT">CHAT</option>
+    <option value="LEAVE">LEAVE</option>
+</select>
+<button onclick="connect()">연결</button>
+<input type="text" id="message">
+<button onclick="send()">샌드</button>
+<div id="md"></div>
 <body>
 <script type='text/javascript'>
-    let socket = new SockJS("/socket");
-    let stompClient = Stomp.over(socket);
-    stompClient.connect({}, function (frame) {
-       console.log(frame);
-    });
+    let stompClient = null;
 
-    stompClient.subscribe("/queue/info", function (response){
-        console.log("test");
-        console.log(JSON.parse(response.body));
-    });
+    function connect(){
+        let socket = new SockJS("http://localhost:8090/socket");
+        stompClient = Stomp.over(socket);
+        stompClient.connect({
+            test : 2323
+        }, function (frame) {
+           console.log("소켓 연결 성공", frame);
+            stompClient.subscribe($('#subscribe').val(), function (response){
+                console.log(JSON.parse(response.body));
+                messageAdd(JSON.parse(response.body));
+            });
+        });
+    }
+
+    function send() {
+        let data = {
+            userKey : $('#userKey').val(),
+            positionType : Number($('#positionType').val()),
+            content : $('#message').val(),
+            messageType : $('#type').val()
+        }
+        stompClient.send($('#send').val(), {}, JSON.stringify(data));
+    }
+
+    function messageAdd(_chat){
+        $('#md').append('<p>' + _chat.userKey + '(' + _chat.positionName + ')' + ' : ' + _chat.content + '</p>');
+    }
+
 </script>
 </body>
 </html>

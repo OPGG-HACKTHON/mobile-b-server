@@ -1,38 +1,35 @@
 package co.mobile.b.server.socket;
 
-import co.mobile.b.server.dto.request.RoomCreateRequest;
-import co.mobile.b.server.dto.response.RoomCreateResponse;
-import co.mobile.b.server.service.RoomService;
+import co.mobile.b.server.enums.Position;
+import co.mobile.b.server.service.RoomServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
-import org.springframework.messaging.simp.annotation.SendToUser;
+import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.RequestBody;
 
+// TODO : 소켓관련 구조에 대한 고민
 @Slf4j
 @RequiredArgsConstructor
 @Controller
 public class SocketController {
+    
+    private final RoomServiceImpl roomService;
 
-    private final RoomService roomService;
+    private final SimpMessageSendingOperations messageSendingOperations;
 
-    /**
-     * Room create room create response.
-     *
-     * @param request  the request
-     * @param accessor the accessor
-     * @return the room create response
-     * @throws Exception the exception
-     */
-    @MessageMapping("/create")
-    @SendToUser("/queue/info")
-    public RoomCreateResponse roomCreate(RoomCreateRequest request, SimpMessageHeaderAccessor accessor) throws Exception{
+    @MessageMapping("/chat/send")
+    // TODO : SimpMessagingTemplate 고려
+//    @SendTo("/topic/message")
 
-        //String sessionId = (String)accessor.getSessionAttributes().get(SESSION);
-        // 방 코드
-        String roomCode = roomService.getRandomRoomCode();
-        log.info(roomCode);
-        return new RoomCreateResponse(request.getRoomName(), roomCode);
+    public void send(@RequestBody @Validated AddMessageParam addMessageParam) throws Exception {
+        // TODO : DB? Cache? RabbitMQ 또는 sqlite 사용해서 본인 device에만?
+        if (MessageType.JOIN.equals(addMessageParam.getMessageType())) {
+            addMessageParam.setContent(Position.valueOf(addMessageParam.getPositionType()).getName() + "님이 입장하셨습니다.");
+        }
+        messageSendingOperations.convertAndSend("/topic/message", new MessageResult(addMessageParam));
     }
 }

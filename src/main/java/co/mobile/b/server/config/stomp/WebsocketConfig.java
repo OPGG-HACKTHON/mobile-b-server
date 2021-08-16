@@ -9,11 +9,16 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 @Configuration
 @EnableWebSocketMessageBroker
 public class WebsocketConfig implements WebSocketMessageBrokerConfigurer {
+    
+    // TODO : JWT 사용시 채널 인터셉터사용
+    
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config){
-        // 메시지
+        // in-memory message-broker, topic에 대한 prefix 설정
         config.enableSimpleBroker("/topic","/queue");
-        config.setApplicationDestinationPrefixes("/create");
+
+        // 메세지를 수신하는 handler의 메세지 prefix 설정
+        config.setApplicationDestinationPrefixes("/stream");
     }
 
     @Override

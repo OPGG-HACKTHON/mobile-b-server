@@ -1,9 +1,11 @@
 package co.mobile.b.server.controller;
 
+import co.mobile.b.server.dto.request.AddRoomParam;
 import co.mobile.b.server.service.RoomService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.hateoas.MediaTypes;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
@@ -14,29 +16,26 @@ public class RoomController {
 
     private final RoomService roomService;
 
-
     /**
-     * 단일 방 조회
+     * 방 생성
      *
-     * @param seq          the seq
-     * @param loginUserSeq the login user seq
-     * @return the room
+     * @param addRoomParam the add room param
+     * @return the object
      * @throws Exception the exception
      */
-    @GetMapping(value = "/{seq}",produces = MediaTypes.HAL_JSON_VALUE)
-    public Object getRoom(@PathVariable("seq") Long seq, @RequestAttribute("seq") Long loginUserSeq) throws Exception {
-        return "getRoom";
+    @PostMapping(produces = MediaTypes.HAL_JSON_VALUE, consumes = MediaTypes.HAL_JSON_VALUE)
+    public Object addRoom(@RequestBody @Validated AddRoomParam addRoomParam) throws Exception{
+        return roomService.addRoom(addRoomParam);
     }
 
     /**
-     * 룸 전체 리스트 검색
+     * 방 확인
      *
-     * TODO : @ModelAttribute @Validated RoomListParam 생성
-     * @return the room list
-     * @throws Exception the exception
+     * @param inviteCode the invite code
+     * @return the room
      */
-    @GetMapping(produces = MediaTypes.HAL_JSON_VALUE)
-    public Object getRoomList() throws Exception {
-        return "getRoomList";
+    @GetMapping(value = "/{inviteCode}",produces = MediaTypes.HAL_JSON_VALUE)
+    public Object getRoom(@PathVariable("inviteCode") String inviteCode) {
+        return null;
     }
 }

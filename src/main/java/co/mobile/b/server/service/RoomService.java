@@ -1,17 +1,8 @@
 package co.mobile.b.server.service;
 
-import org.apache.commons.lang3.RandomStringUtils;
-import org.springframework.stereotype.Service;
+import co.mobile.b.server.dto.request.AddRoomParam;
+import co.mobile.b.server.dto.response.RoomResult;
 
-@Service
-public class RoomService {
-    public String getRandomRoomCode(){
-        int length = 7;
-        boolean useLetters = true;
-        boolean useNumbers = true;
-        // 7자 난수 생성
-        String roomCode = RandomStringUtils.random(length,useLetters,useNumbers);
-
-        return roomCode;
-    }
+public interface RoomService {
+    RoomResult addRoom(AddRoomParam addRoomParam);
 }
