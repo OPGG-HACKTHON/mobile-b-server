@@ -28,7 +28,7 @@ public class SocketEventHandler {
 
         //GenericMessage msg = (GenericMessage) headerAccessor.getMessageHeaders().get("simpConnectMessage");
 
-        log.info("handleWebSocketConnectListener. Session ID : [{}]", headerAccessor.getSessionId());
+        log.info("Received a new web socket connection. Session ID : [{}]", headerAccessor.getSessionId());
     }
 
 
@@ -41,7 +41,7 @@ public class SocketEventHandler {
     public void handleWebSocketDisConnectListener(SessionDisconnectEvent event) {
         StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
 
-        log.info("handleWebSocketDisConnectListener. Session ID : [{}]", headerAccessor.getSessionId());
+        log.info("Web socket session closed. Session ID : [{}]", headerAccessor.getSessionId());
     }
 
     /**

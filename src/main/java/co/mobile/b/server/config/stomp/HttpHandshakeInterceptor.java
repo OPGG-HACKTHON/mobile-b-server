@@ -22,7 +22,7 @@ public class HttpHandshakeInterceptor implements HandshakeInterceptor {
             ServletServerHttpRequest servletRequest = (ServletServerHttpRequest) request;
             HttpSession session = servletRequest.getServletRequest().getSession();
             attributes.put(SESSION, session);
-            log.info("beforeHandshake : Session. [{}]", session);
+            log.info("beforeHandshake : Session Id. [{}]", session.getId());
         }
         return true;
     }

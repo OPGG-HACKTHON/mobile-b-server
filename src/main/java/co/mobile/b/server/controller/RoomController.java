@@ -35,7 +35,8 @@ public class RoomController {
      * @return the room
      */
     @GetMapping(value = "/{inviteCode}",produces = MediaTypes.HAL_JSON_VALUE)
-    public Object getRoom(@PathVariable("inviteCode") String inviteCode) {
+    public Object roomCheck(@PathVariable("inviteCode") String inviteCode) throws Exception {
+        roomService.roomCheck(inviteCode);
         return null;
     }
 }

@@ -22,7 +22,7 @@ public class Message extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "message_seq", updatable = false, unique = false)
-    private Long messageSeq;                                                   // 기본키
+    private Long messageSeq;                                                // 기본키
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "room_seq",
@@ -35,7 +35,7 @@ public class Message extends BaseEntity {
     private String userKey;                                                 // 유저 키
     
     @Column(name = "position_type")
-    private Integer positionType;                                          // 포지션 타입
+    private Integer positionType;                                           // 포지션 타입
 
     @Column(name = "content")
     private String content;                                                 // 메세지
