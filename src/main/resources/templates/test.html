@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
+
+    <title>Socket Test</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div id="main-content" class="container" style="display: flex; flex-direction: column; text-align: center;">
+    <div id="create-room" style="display: flex; justify-content: center; margin-top: 20px;">
+        <input type="text" class="form-control" placeholder="UUID" id="uuid-input" style="width: 500px; display: inline;">
+        <button class="btn btn-outline-secondary" id="get-code-btn" type="button">방 생성</button>
+    </div>
+    <div id="create-room-result" style="text-align: center;">
+        <span>방 코드 : </span><span id="code"></span>
+    </div>
+
+    <hr>
+
+    <div id="connect-info" style="display: flex; justify-content: center; margin-top: 20px;">
+        <input type="text" class="form-control" id="subscribe" value="/topic/message" style="width: 280px; display: inline;">
+        <input type="text" class="form-control" id="send" value="/stream/chat/send" style="width: 280px; display: inline;">
+    </div>
+    <span>연결 경로</span>
+    <div style="display: flex; justify-content: center; margin-top: 20px;">
+        <input type="text" class="form-control" id="inviteCode" placeholder="4자리 숫자" style="width: 500px;">
+    </div>
+    <span>초대코드 입력</span>
+
+    <div id="user-info" style="display: flex; justify-content: center; margin-top: 20px;">
+        <input type="text" class="form-control" id="userKey" value="test1" style="width: 280px; display: inline;">
+        <input type="text" class="form-control" id="positionType" value="1" style="width: 280px; display: inline;">
+        <button class="btn btn-outline-secondary" onclick="checkRoomExistsAndConnect()">방 입장</button>
+    </div>
+    <span>닉네임, 포지션</span>
+    <hr>
+    <div id="controllers" style="display: flex; justify-content: center; margin-top: 20px;">
+        <select id="type" class="form-control" style="width: 100px;">
+            <option value="JOIN">JOIN</option>
+            <option value="CHAT">CHAT</option>
+            <option value="LEAVE">LEAVE</option>
+        </select>
+        <input type="text" class="form-control" id="message" placeholder="메시지 입력" style="width: 500px;">
+        <button class="btn btn-outline-primary" onclick="send()">전송</button>
+    </div>
+    
+    <hr>
+
+    <div id="md" style="text-align: center;"></div>
+</div>
+<br>
+
+<script type='text/javascript'>
+    let stompClient = null;
+
+    function checkRoomExistsAndConnect(){
+        // 초대코드 입력 확인
+        if ($('#inviteCode').val() == ''){
+            alert('초대코드를 입력해주세요');
+            return;
+        }
+
+        // 해당 코드 방 존재 여부 확인
+        $.ajax({
+            url: '/api/v1/rooms/' + $('#inviteCode').val(),
+            success:function(exists){
+                if (exists) connect();
+                else alert('존재하지 않는 방입니다');
+            }
+        })
+    }
+
+    function connect(){
+        let socket = new SockJS("http://localhost:8090/socket");
+        stompClient = Stomp.over(socket);
+        stompClient.connect({
+            test : 2323
+        }, function (frame) {
+           console.log("소켓 연결 성공", frame);
+            stompClient.subscribe($('#subscribe').val() + '/' + $('#inviteCode').val(), function (response){
+                console.log(JSON.parse(response.body));
+                messageAdd(JSON.parse(response.body));
+            });
+        });
+    }
+
+    function send() {
+        let data = {
+            userKey : $('#userKey').val(),
+            positionType : Number($('#positionType').val()),
+            content : $('#message').val(),
+            messageType : $('#type').val(),
+            destRoomCode : $('#inviteCode').val()
+        }
+        stompClient.send($('#send').val(), {}, JSON.stringify(data));
+    }
+
+    function messageAdd(_chat){
+        $('#md').append(_chat.content + '</p>');
+    }
+
+    $('#get-code-btn').click(function(){
+        $.ajax({
+            url:"/api/v1/rooms/",
+            type:"POST",
+            contentType : "application/hal+json; charset=UTF-8",
+            data:JSON.stringify({'userKey':$('#uuid-input').val()}),
+            success: (res)=>{
+                $('#code').html(res['inviteCode']);
+            }
+        })
+    })
+</script>
+</body>
+</html>

@@ -37,9 +37,9 @@ public class Room extends BaseEntity{
     @Column(name = "invite_code")
     private String inviteCode;                                              // 초대 코드
 
-    public Room(AddRoomParam addRoomParam, String domain) {
+    public Room(AddRoomParam addRoomParam, String inviteCode) {
         this.userKey = addRoomParam.getUserKey();
         // RandomStringUtils.random(7,true,true)
-        this.inviteCode = domain + UUID.randomUUID();
+        this.inviteCode = inviteCode;
     }
 }

@@ -28,8 +28,16 @@ public class SocketController {
     public void send(@RequestBody @Validated AddMessageParam addMessageParam) throws Exception {
         // TODO : DB? Cache? RabbitMQ 또는 sqlite 사용해서 본인 device에만?
         if (MessageType.JOIN.equals(addMessageParam.getMessageType())) {
-            addMessageParam.setContent(Position.valueOf(addMessageParam.getPositionType()).getName() + "님이 입장하셨습니다.");
+            addMessageParam.setContent(addMessageParam.getUserKey() + "("
+                    + Position.valueOf(addMessageParam.getPositionType()) + ")" + " 님이 입장하셨습니다.");
         }
-        messageSendingOperations.convertAndSend("/topic/message", new MessageResult(addMessageParam));
+        if (MessageType.LEAVE.equals((addMessageParam.getMessageType()))) {
+            addMessageParam.setContent(addMessageParam.getUserKey() + "(" +
+                    Position.valueOf(addMessageParam.getPositionType()) + ")" + " 님이 퇴장하셨습니다.");
+        }
+
+        // 해당 방을 구독한 유저에게만 broadcast
+        String broadcastURL = "/topic/message/" + addMessageParam.getDestRoomCode();
+        messageSendingOperations.convertAndSend(broadcastURL, new MessageResult(addMessageParam));
     }
 }

@@ -29,6 +29,18 @@ public class RoomServiceImpl implements RoomService{
             throw new RuntimeException("이미 방이 존재합니다.");
         }
         return new RoomResult(roomRepository.save(new Room(addRoomParam, appDomain)));
+
+        /*String inviteCode = "";
+        do{
+            // 난수 생성
+            inviteCode = Integer.toString((int)(Math.random() * 10000));
+            // 3자리 수 이하라면 0 추가
+            while(inviteCode.length() < 4) inviteCode = "0" + inviteCode;
+        }
+        // 난수 초대 코드가 이미 존재하는 방 코드라면 재생성
+        while (roomRepository.existsByInviteCodeAndDeletedIsFalse(inviteCode));
+
+        return new RoomResult(roomRepository.save(new Room(addRoomParam, inviteCode)));*/
     }
 
     @Override
