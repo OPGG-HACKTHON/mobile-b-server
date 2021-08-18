@@ -36,6 +36,8 @@ public class RoomController {
      */
     @GetMapping(value = "/{inviteCode}",produces = MediaTypes.HAL_JSON_VALUE)
     public Object getRoom(@PathVariable("inviteCode") String inviteCode) {
-        return null;
+        Boolean exists = roomService.checkRoomExistsByInviteCode(inviteCode);
+
+        return exists;
     }
 }

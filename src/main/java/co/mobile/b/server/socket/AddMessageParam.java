@@ -24,4 +24,6 @@ public class AddMessageParam {
     private String content;
     @NotNull(message = "messageType를 입력하세요.")
     private MessageType messageType;
+    // 목적지 방 코드
+    private String destRoomCode;
 }

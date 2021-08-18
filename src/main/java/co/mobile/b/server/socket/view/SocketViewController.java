@@ -13,6 +13,6 @@ public class SocketViewController {
 
     @GetMapping(value = "/test", produces = MediaType.TEXT_HTML_VALUE)
     public String test() {
-        return "test";
+        return "test.html";
     }
 }
