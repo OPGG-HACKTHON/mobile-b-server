@@ -29,12 +29,25 @@ public class RoomController {
     }
 
     /**
+     * 방 조회
+     *
+     * @param userKey the user key
+     * @return the room
+     * @throws Exception the exception
+     */
+    @GetMapping(value = "/{userKey}",produces = MediaTypes.HAL_JSON_VALUE)
+    public Object getRoom(@PathVariable("userKey") String userKey) throws Exception {
+        return roomService.getRoom(userKey);
+    }
+
+    /**
      * 방 확인
      *
      * @param inviteCode the invite code
      * @return the room
+     * @throws Exception the exception
      */
-    @GetMapping(value = "/{inviteCode}",produces = MediaTypes.HAL_JSON_VALUE)
+    @GetMapping(value = "/check/{inviteCode}",produces = MediaTypes.HAL_JSON_VALUE)
     public Object roomCheck(@PathVariable("inviteCode") String inviteCode) throws Exception {
         return roomService.roomCheck(inviteCode);
     }

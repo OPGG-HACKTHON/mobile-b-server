@@ -1,6 +1,6 @@
 package co.mobile.b.server.socket;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 class SocketControllerTest {
 

@@ -16,20 +16,23 @@ import java.time.format.DateTimeFormatter;
 @NoArgsConstructor
 @ToString
 public class RoomResult {
+    // TODO : @JsonProperty로 다변경
     private Long roomSeq;
     private String userKey;
     private String inviteCode;
+    private String inviteURL;
     @JsonIgnore
     private LocalDateTime createdAt;
 
-    @JsonProperty("created_at_str")
+    @JsonProperty("createdAtStr")
     private String createdAtStr;
 
-    public RoomResult(Room room) {
+    public RoomResult(Room room, String appDomain) {
         this.roomSeq = room.getRoomSeq();
         this.userKey = room.getUserKey();
         this.inviteCode = room.getInviteCode();
         this.createdAt = room.getCreateAt();
+        this.inviteURL = appDomain+inviteCode;
         setRoomCreatedAtForStr();
     }
 

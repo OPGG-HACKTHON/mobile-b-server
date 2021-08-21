@@ -8,5 +8,9 @@ import java.util.Optional;
 public interface RoomRepository extends JpaRepository<Room, Long> {
     Boolean existsByUserKeyAndAndDeletedIsFalse(String userKey);
 
+    Boolean existsByInviteCodeAndDeletedIsFalse(String inviteCode);
+
+    Optional<Room> findByUserKeyAndDeletedFalse(String inviteCode);
+
     Optional<Room> findByInviteCodeAndAndDeletedFalse(String inviteCode);
 }

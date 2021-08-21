@@ -18,19 +18,19 @@ public class RoomServiceImpl implements RoomService{
     @Value("${app.domain}")
     private String appDomain;
 
-    @Value("{message.mapping}")
+    @Value("${stomp.message.mapping}")
     private String messageMapping;
 
-    @Value("{send.to}")
+    @Value("${stomp.send.to}")
     private String sendTo;
 
     public RoomResult addRoom(AddRoomParam addRoomParam) throws Exception {
         if (roomRepository.existsByUserKeyAndAndDeletedIsFalse(addRoomParam.getUserKey())) {
             throw new RuntimeException("이미 방이 존재합니다.");
         }
-        return new RoomResult(roomRepository.save(new Room(addRoomParam, appDomain)));
+        /*return new RoomResult(roomRepository.save(new Room(addRoomParam, appDomain)));*/
 
-        /*String inviteCode = "";
+        String inviteCode = "";
         do{
             // 난수 생성
             inviteCode = Integer.toString((int)(Math.random() * 10000));
@@ -40,7 +40,12 @@ public class RoomServiceImpl implements RoomService{
         // 난수 초대 코드가 이미 존재하는 방 코드라면 재생성
         while (roomRepository.existsByInviteCodeAndDeletedIsFalse(inviteCode));
 
-        return new RoomResult(roomRepository.save(new Room(addRoomParam, inviteCode)));*/
+        return new RoomResult(roomRepository.save(new Room(addRoomParam, inviteCode)), appDomain);
+    }
+
+    @Override
+    public RoomResult getRoom(String userKey) throws Exception {
+        return new RoomResult(roomRepository.findByUserKeyAndDeletedFalse(userKey).orElseThrow(() -> new RuntimeException("해당 유저의 방이 존재 하지 않습니다.")), appDomain);
     }
 
     @Override
@@ -48,4 +53,5 @@ public class RoomServiceImpl implements RoomService{
         Room room = roomRepository.findByInviteCodeAndAndDeletedFalse(inviteCode).orElseThrow(() -> new RuntimeException("초대코드가 유효하지 않습니다."));
         return new RoomCheckResult(room, messageMapping, sendTo);
     }
+
 }
