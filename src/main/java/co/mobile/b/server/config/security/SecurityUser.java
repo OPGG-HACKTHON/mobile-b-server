@@ -11,7 +11,7 @@ import java.util.Collection;
  */
 public class SecurityUser implements UserDetails {
 
-    private Long seq;
+    private Long userSeq;
     private String email;
     private String password;
     private User user;
@@ -28,7 +28,7 @@ public class SecurityUser implements UserDetails {
      * @param user the user
      */
     public SecurityUser(User user) {
-        this.seq = user.getSeq();
+        this.userSeq = user.getUserSeq();
         this.email = user.getEmail();
         this.password = "{noop}"+user.getPassword();
         this.user = user;
@@ -40,7 +40,7 @@ public class SecurityUser implements UserDetails {
     }
 
     public Long getSeq() {
-        return this.seq;
+        return this.userSeq;
     }
 
     public User getUser() {
