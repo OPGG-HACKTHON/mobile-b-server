@@ -20,6 +20,8 @@ public class MessageResult {
     private int positionType;
     private String positionName;
     private String content;
+    // 메시지 종류(채팅, 입 퇴장, 와드위치 등등) / 문자
+    private String messageType;
     @JsonIgnore
     private LocalDateTime createdAt;
 
@@ -40,6 +42,7 @@ public class MessageResult {
         this.positionType = addMessageParam.getPositionType();
         this.positionName = Position.valueOf(positionType).getName();
         this.content = addMessageParam.getContent();
+        this.messageType = addMessageParam.getMessageType().name();
         this.createdAtStr = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss"));
     }
 
