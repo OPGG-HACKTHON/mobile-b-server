@@ -42,14 +42,13 @@
     <hr>
     <div id="controllers" style="display: flex; justify-content: center; margin-top: 20px;">
         <select id="type" class="form-control" style="width: 100px;">
-            <option value="JOIN">JOIN</option>
             <option value="CHAT">CHAT</option>
             <option value="LEAVE">LEAVE</option>
         </select>
         <input type="text" class="form-control" id="message" placeholder="메시지 입력" style="width: 500px;">
         <button class="btn btn-outline-primary" onclick="send()">전송</button>
     </div>
-    
+
     <hr>
 
     <div id="md" style="text-align: center;"></div>
@@ -80,7 +79,9 @@
         let socket = new SockJS("http://localhost:8090/socket");
         stompClient = Stomp.over(socket);
         stompClient.connect({
-            test : 2323
+            inviteCode : $('#inviteCode').val(),
+            username : $('#userKey').val(),
+            positionType : $('#positionType').val()
         }, function (frame) {
            console.log("소켓 연결 성공", frame);
             stompClient.subscribe($('#subscribe').val() + '/' + $('#inviteCode').val(), function (response){
