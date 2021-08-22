@@ -1,0 +1,27 @@
+= Utils API Docs
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 3
+:sectlinks:
+
+include::common-api-docs.adoc[]
+
+[[get-position]]
+== 포지션 조회
+CURL
+
+include::{snippets}/utils-controller-test/get-position-test/curl-request.adoc[]
+
+요청 정보
+
+include::{snippets}/utils-controller-test/get-position-test/http-request.adoc[]
+
+응답 정보
+
+include::{snippets}/utils-controller-test/get-position-test/http-response.adoc[]
+
+응답 형식
+
+include::{snippets}/utils-controller-test/get-position-test/response-fields.adoc[]

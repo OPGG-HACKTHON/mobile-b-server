@@ -22,7 +22,7 @@ public class RestControllerAspect {
      * @throws Throwable the throwable
      */
     // 범위 설정 execution(* js.toy.vocabulary.controller.*.*(..))
-    @Around("execution(* js.toy.vocabulary.controller.*.*(..))")
+    @Around("execution(* co.mobile.b.server.controller.*.*(..))")
     public RestResponse<Object> restResponseHandler(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         return new RestResponse<>(HttpStatus.OK.value(), "OK", proceedingJoinPoint.proceed());
     }

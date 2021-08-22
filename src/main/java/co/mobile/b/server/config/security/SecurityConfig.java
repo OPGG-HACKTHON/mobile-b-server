@@ -38,7 +38,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new SecurityResponseAfterFilter();
     }
 
-
     /* AuthenticationManager 외부 사용하기 위해 */
     @Override
     @Bean
@@ -69,14 +68,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 /* 예외 처리 */
                 .exceptionHandling()
                     .accessDeniedHandler(accessDeniedHandler) // 403(forbidden) 에러 처리를 위한 SecurityAccessDeniedHandler 등록
-                    .authenticationEntryPoint(authenticationEntryPoint) // 401(unauthorized) 에러 처리를 위한 SecurityAuthenticationEntryPoint 등록
+//                    .authenticationEntryPoint(authenticationEntryPoint) // 401(unauthorized) 에러 처리를 위한 SecurityAuthenticationEntryPoint 등록
                     .and()
                 /**
                 * - authorizeRequests() : 인증절차에 대한 설정을 진행
                 * - antMatchers() : 특정 URL 에 대해서 어떻게 인증처리를 할지 결정
                 * - permitAll() : 인증 허용
                 * - authenticated() : 요청내에 스프링 시큐리티 컨텍스트 내에서 인증이 완료되어야 api를 사용할 수 있다. 인증이 되지 않은 요청은 403(Forbidden)
-                * .antMatchers("/api/v1/vocabulary/auth").anonymous() => 유저의 상태가 anonymous 일때 호출 가능
+                * .antMatchers("/api/v1/").anonymous() => 유저의 상태가 anonymous 일때 호출 가능
                 **/
                 /* 인증절차 시작 */
                 .authorizeRequests()
@@ -85,11 +84,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     /* Spring에서는 OPTIONS에 대한 요청을 막고 있으므로 해당 코드를 통해서 OPTIONS 요청이 왔을 때도 오류를 리턴하지 않도록 함 */
                         .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 
+                        // 허가 항목
                         .antMatchers("/h2-console/**").permitAll()
-                        .antMatchers("/api/v1/test/permit-all").permitAll()
-                        .antMatchers("/api/v1/auth/login").permitAll()
+                        .antMatchers("/api/v1/**").permitAll()
+                        .antMatchers("/socket/**").permitAll()
 
-                        .antMatchers("/api/vi/test/auth").hasRole("AUTH")//.authenticated()
+                        // 확인 항목
+//                        .antMatchers("/api/vi/test/auth").hasRole("AUTH")//.authenticated()
                         .antMatchers("/**").authenticated()
                         .anyRequest().permitAll()
                     .and()
