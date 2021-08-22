@@ -41,8 +41,9 @@ public class SocketEventHandler {
         String inviteCode = (String)nativeHeaders.get("inviteCode").get(0);
         String username = (String) nativeHeaders.get("username").get(0);
         int positionType = Integer.parseInt((String)nativeHeaders.get("positionType").get(0));
+        String sessionId = headerAccessor.getSessionId();
 
-        socketController.enterBroadcast(inviteCode,username,positionType);
+        socketController.enterBroadcast(inviteCode,username,positionType,sessionId);
     }
 
 
@@ -56,6 +57,8 @@ public class SocketEventHandler {
         StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
 
         log.info("Web socket session closed. Session ID : [{}]", headerAccessor.getSessionId());
+
+        socketController.exitBroadcast(headerAccessor.getSessionId());
     }
 
     /**
