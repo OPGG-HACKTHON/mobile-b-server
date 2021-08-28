@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 @Controller
 public class SocketController {
 
-    private final RoomServiceImpl roomService;
     private final SimpMessageSendingOperations messageSendingOperations;
     private final StringRedisTemplate redisTemplate;
     ObjectMapper mapper = new ObjectMapper();

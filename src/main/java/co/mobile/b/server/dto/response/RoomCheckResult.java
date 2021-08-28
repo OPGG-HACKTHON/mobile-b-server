@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.List;
+
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,9 +15,11 @@ import lombok.ToString;
 public class RoomCheckResult {
     private String messageMapping;
     private String sendTo;
+    private List<String> roomLog;
 
-    public RoomCheckResult(Room room, String messageMapping, String sendTo) {
+    public RoomCheckResult(Room room, String messageMapping, String sendTo, List<String> roomLog) {
         this.messageMapping = messageMapping;
         this.sendTo = sendTo + room.getInviteCode();
+        this.roomLog = roomLog;
     }
 }
