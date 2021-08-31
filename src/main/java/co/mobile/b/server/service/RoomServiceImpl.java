@@ -7,13 +7,18 @@ import co.mobile.b.server.entity.Room;
 import co.mobile.b.server.repository.RoomRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.ListOperations;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
 public class RoomServiceImpl implements RoomService{
 
     private final RoomRepository roomRepository;
+    private final StringRedisTemplate redisTemplate;
 
     @Value("${app.domain}")
     private String appDomain;
@@ -51,7 +56,12 @@ public class RoomServiceImpl implements RoomService{
     @Override
     public RoomCheckResult roomCheck(String inviteCode) throws Exception {
         Room room = roomRepository.findByInviteCodeAndAndDeletedFalse(inviteCode).orElseThrow(() -> new RuntimeException("초대코드가 유효하지 않습니다."));
-        return new RoomCheckResult(room, messageMapping, sendTo);
+        final ListOperations<String, String> stringStringListOperations = redisTemplate.opsForList();
+        final String key = "room-" + inviteCode;
+
+        final Long len = stringStringListOperations.size(key);
+        final List<String> roomLog = stringStringListOperations.range(key,0, len);
+        return new RoomCheckResult(room, messageMapping, sendTo, roomLog);
     }
 
 }
