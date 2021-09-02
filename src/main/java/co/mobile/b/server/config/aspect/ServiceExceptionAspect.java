@@ -21,7 +21,7 @@ public class ServiceExceptionAspect {
      * @return the object
      */
     // 범위 설정 execution(* js.toy.vocabulary.service.*.*(..))
-    @Around("execution(* js.toy.vocabulary.service.*.*(..))")
+    @Around("execution(* co.mobile.b.server.service.*.*(..))")
     public Object serviceExceptionHandler(ProceedingJoinPoint proceedingJoinPoint){
         try {
             return proceedingJoinPoint.proceed();
