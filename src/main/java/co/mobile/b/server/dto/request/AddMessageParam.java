@@ -1,5 +1,6 @@
-package co.mobile.b.server.socket;
+package co.mobile.b.server.dto.request;
 
+import co.mobile.b.server.enums.MessageType;
 import lombok.*;
 
 import javax.validation.constraints.Max;

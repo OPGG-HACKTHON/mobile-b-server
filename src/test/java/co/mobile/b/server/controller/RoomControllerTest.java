@@ -6,6 +6,7 @@ import co.mobile.b.server.repository.RoomRepository;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.MediaTypes;
+import org.springframework.http.MediaType;
 import org.springframework.restdocs.payload.JsonFieldType;
 
 import java.util.Optional;
@@ -33,17 +34,19 @@ class RoomControllerTest extends AbstractControllerTest {
 
         AddRoomParam param = AddRoomParam.builder()
                 .userKey("userKey")
+                .inviteCode("inviteCode")
                 .build();
 
         mockMvc.perform(post(BASE_URL)
-                .accept(MediaTypes.HAL_JSON_VALUE)
-                .contentType(MediaTypes.HAL_JSON_VALUE)
+                .accept(MediaType.APPLICATION_JSON_VALUE)
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .content(objectMapper.writeValueAsString(param)))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andDo(document.document(
                         requestFields(
-                                fieldWithPath("userKey").type(JsonFieldType.STRING).description("유저 고유 번호")
+                                fieldWithPath("userKey").type(JsonFieldType.STRING).description("유저 고유 번호"),
+                                fieldWithPath("inviteCode").type(JsonFieldType.STRING).description("초대 링크 또는 코드(생략 시 자동생성)")
                         ),
                         responseFields(
                                 fieldWithPath("code").type(JsonFieldType.NUMBER).description("Http 상태 코드"),
@@ -65,8 +68,8 @@ class RoomControllerTest extends AbstractControllerTest {
     @Order(2)
     void getRoomTest() throws Exception {
         mockMvc.perform(get(BASE_URL+"/{userKey}", "userKey")
-                        .accept(MediaTypes.HAL_JSON_VALUE)
-                        .contentType(MediaTypes.HAL_JSON_VALUE))
+                        .accept(MediaType.APPLICATION_JSON_VALUE)
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andDo(
@@ -95,13 +98,11 @@ class RoomControllerTest extends AbstractControllerTest {
     @Order(3)
     void roomCheckTest() throws Exception {
 
-        Optional<Room> roomOp = roomRepository.findByUserKeyAndDeletedFalse("userKey");
-        Room room = Optional.ofNullable(roomOp.get()).orElse(null);
-        if (room == null) fail("방이 존재 하지 않습니다.");
+        Room room = roomRepository.findByUserKeyAndDeletedFalse("userKey").orElseThrow(() -> new RuntimeException("방이 존재 하지 않습니다."));
 
         mockMvc.perform(get(BASE_URL+"/check/{inviteCode}", room.getInviteCode())
-                .accept(MediaTypes.HAL_JSON_VALUE)
-                .contentType(MediaTypes.HAL_JSON_VALUE))
+                .accept(MediaType.APPLICATION_JSON_VALUE)
+                .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andDo(
@@ -115,7 +116,8 @@ class RoomControllerTest extends AbstractControllerTest {
                                         fieldWithPath("responseTime").type(JsonFieldType.STRING).description("응답 시간"),
 
                                         fieldWithPath("result.messageMapping").type(JsonFieldType.STRING).description("메세지 URL"),
-                                        fieldWithPath("result.sendTo").type(JsonFieldType.STRING).description("구독 URL")
+                                        fieldWithPath("result.sendTo").type(JsonFieldType.STRING).description("구독 URL"),
+                                        fieldWithPath("result.roomLog[]").type(JsonFieldType.ARRAY).description("방 이력")
                                 )
                         )
                 );

@@ -1,4 +1,4 @@
-package co.mobile.b.server.socket.view;
+package co.mobile.b.server.controller.view;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;

@@ -1,6 +1,6 @@
 package co.mobile.b.server.config.stomp;
 
-import co.mobile.b.server.socket.SocketController;
+import co.mobile.b.server.controller.SocketController;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.EventListener;
@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.socket.messaging.SessionConnectedEvent;
 import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -41,8 +40,9 @@ public class SocketEventHandler {
         String inviteCode = (String)nativeHeaders.get("inviteCode").get(0);
         String username = (String) nativeHeaders.get("username").get(0);
         int positionType = Integer.parseInt((String)nativeHeaders.get("positionType").get(0));
+        String sessionId = headerAccessor.getSessionId();
 
-        socketController.enterBroadcast(inviteCode,username,positionType);
+        socketController.enterBroadcast(inviteCode,username,positionType,sessionId);
     }
 
 
@@ -56,6 +56,8 @@ public class SocketEventHandler {
         StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
 
         log.info("Web socket session closed. Session ID : [{}]", headerAccessor.getSessionId());
+
+        socketController.exitBroadcast(headerAccessor.getSessionId());
     }
 
     /**
