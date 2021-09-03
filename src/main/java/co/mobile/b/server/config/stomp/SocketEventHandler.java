@@ -1,6 +1,6 @@
 package co.mobile.b.server.config.stomp;
 
-import co.mobile.b.server.socket.SocketController;
+import co.mobile.b.server.controller.SocketController;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.EventListener;
@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.socket.messaging.SessionConnectedEvent;
 import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 

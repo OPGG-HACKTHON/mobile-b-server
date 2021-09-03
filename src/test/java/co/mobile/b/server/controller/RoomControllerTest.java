@@ -98,9 +98,7 @@ class RoomControllerTest extends AbstractControllerTest {
     @Order(3)
     void roomCheckTest() throws Exception {
 
-        Optional<Room> roomOp = roomRepository.findByUserKeyAndDeletedFalse("userKey");
-        Room room = Optional.ofNullable(roomOp.get()).orElse(null);
-        if (room == null) fail("방이 존재 하지 않습니다.");
+        Room room = roomRepository.findByUserKeyAndDeletedFalse("userKey").orElseThrow(() -> new RuntimeException("방이 존재 하지 않습니다."));
 
         mockMvc.perform(get(BASE_URL+"/check/{inviteCode}", room.getInviteCode())
                 .accept(MediaType.APPLICATION_JSON_VALUE)
@@ -118,7 +116,8 @@ class RoomControllerTest extends AbstractControllerTest {
                                         fieldWithPath("responseTime").type(JsonFieldType.STRING).description("응답 시간"),
 
                                         fieldWithPath("result.messageMapping").type(JsonFieldType.STRING).description("메세지 URL"),
-                                        fieldWithPath("result.sendTo").type(JsonFieldType.STRING).description("구독 URL")
+                                        fieldWithPath("result.sendTo").type(JsonFieldType.STRING).description("구독 URL"),
+                                        fieldWithPath("result.roomLog[]").type(JsonFieldType.ARRAY).description("방 이력")
                                 )
                         )
                 );

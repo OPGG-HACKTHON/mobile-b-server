@@ -113,13 +113,13 @@
         $.ajax({
             url:"/api/v1/rooms/",
             type:"POST",
-            contentType : "application/hal+json; charset=UTF-8",
+            contentType : "application/json; charset=UTF-8",
             data:JSON.stringify({'userKey':$('#uuid-input').val()}),
             success: (res)=>{
                 $('#code').html(res['result']['inviteCode']);
             }
         })
-    })
+    });
 </script>
 </body>
 </html>

@@ -1,6 +1,8 @@
-package co.mobile.b.server.socket;
+package co.mobile.b.server.dto.response;
 
 import co.mobile.b.server.enums.Position;
+import co.mobile.b.server.dto.request.AddMessageParam;
+import co.mobile.b.server.entity.Message;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

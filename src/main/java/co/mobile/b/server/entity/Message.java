@@ -1,4 +1,4 @@
-package co.mobile.b.server.socket;
+package co.mobile.b.server.entity;
 
 import co.mobile.b.server.entity.BaseEntity;
 import co.mobile.b.server.entity.Room;
