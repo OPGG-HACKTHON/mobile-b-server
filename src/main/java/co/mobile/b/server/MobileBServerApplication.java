@@ -1,6 +1,5 @@
 package co.mobile.b.server;
 
-import co.mobile.b.server.entity.User;
 import co.mobile.b.server.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -19,7 +18,7 @@ public class MobileBServerApplication {
     
     public static void main(String[] args) {
 
-        System.setProperty("spring.profiles.default", "dev");
+//        System.setProperty("spring.profiles.default", "dev");
 
         SpringApplication.run(MobileBServerApplication.class, args);
     }
