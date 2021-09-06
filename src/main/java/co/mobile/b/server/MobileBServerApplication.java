@@ -19,7 +19,7 @@ public class MobileBServerApplication {
     
     public static void main(String[] args) {
 
-        System.setProperty("spring.profiles.default", "dev");
+//        System.setProperty("spring.profiles.default", "dev");
 
         SpringApplication.run(MobileBServerApplication.class, args);
     }
