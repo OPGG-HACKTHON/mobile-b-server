@@ -17,7 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
 
-// TODO : 소켓관련 구조에 대한 고민
+// TODO : 소켓관련 구조에 대한 고민SimpMessageSendingOperations
 @Slf4j
 @RequiredArgsConstructor
 @Controller
@@ -49,7 +49,7 @@ public class SocketController {
             String broadcastURL = "/topic/message/" + addMessageParam.getDestRoomCode();
             messageSendingOperations.convertAndSend(broadcastURL, msgResult);
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println(e) ;
         }
     }
 
