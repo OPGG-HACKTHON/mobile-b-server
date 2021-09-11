@@ -1,4 +1,4 @@
-package co.mobile.b.server.socket;
+package co.mobile.b.server.config.redis;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

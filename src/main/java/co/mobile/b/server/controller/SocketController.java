@@ -4,7 +4,7 @@ import co.mobile.b.server.enums.Position;
 import co.mobile.b.server.dto.request.AddMessageParam;
 import co.mobile.b.server.dto.response.MessageResult;
 import co.mobile.b.server.enums.MessageType;
-import co.mobile.b.server.socket.UserConnectionInfo;
+import co.mobile.b.server.config.redis.UserConnectionInfo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
