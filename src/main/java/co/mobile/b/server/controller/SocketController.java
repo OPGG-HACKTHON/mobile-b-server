@@ -4,6 +4,7 @@ import co.mobile.b.server.enums.Position;
 import co.mobile.b.server.dto.request.AddMessageParam;
 import co.mobile.b.server.dto.response.MessageResult;
 import co.mobile.b.server.enums.MessageType;
+import co.mobile.b.server.service.RoomService;
 import co.mobile.b.server.socket.UserConnectionInfo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +26,7 @@ public class SocketController {
 
     private final SimpMessageSendingOperations messageSendingOperations;
     private final StringRedisTemplate redisTemplate;
+    private final RoomService roomService;
     ObjectMapper mapper = new ObjectMapper();
 
     @MessageMapping("/chat/send")
@@ -53,7 +55,7 @@ public class SocketController {
         }
     }
 
-    public void enterBroadcast(String roomCode, String username, int positionType, String sessionId){
+    public void enterBroadcast(String roomCode, String username, int positionType, String sessionId,String UUID) throws Exception{
         AddMessageParam broadCastMessage = new AddMessageParam();
         broadCastMessage.setMessageType(MessageType.JOIN);
         broadCastMessage.setDestRoomCode(roomCode);
@@ -65,7 +67,8 @@ public class SocketController {
         final HashOperations<String, String, String> stringStringHashOperations = redisTemplate.opsForHash();
 
         final String key = "room-" + roomCode;
-        UserConnectionInfo connInfo = new UserConnectionInfo(username,positionType,roomCode);
+        final Boolean isRoomHost = roomService.isRoomHost(roomCode,UUID);
+        UserConnectionInfo connInfo = new UserConnectionInfo(username,positionType,roomCode,UUID,isRoomHost);
 
         MessageResult msgResult = new MessageResult(broadCastMessage);
         try{
