@@ -13,4 +13,5 @@ public class UserConnectionInfo {
     private String userKey;
     private int positionType;
     private String roomCode;
+    private String uuid;
 }

@@ -82,6 +82,7 @@
         let socket = new SockJS("http://localhost:8090/socket");
         stompClient = Stomp.over(socket);
         stompClient.connect({
+            uuid : $('#uuid-input').val(),
             inviteCode : $('#inviteCode').val(),
             username : $('#userKey').val(),
             positionType : $('#positionType').val()

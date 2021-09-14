@@ -1,0 +1,84 @@
+[2021-09-14 21:28:11:4536][restartedMain] DEBUG o.s.w.s.r.ResourceUrlEncodingFilter - Filter 'resourceUrlEncodingFilter' configured for use
+[2021-09-14 21:28:11:4537][restartedMain] DEBUG o.s.w.f.CharacterEncodingFilter - Filter 'characterEncodingFilter' configured for use
+[2021-09-14 21:28:11:5015][restartedMain] DEBUG o.s.w.s.s.s.WebSocketHandlerMapping - Patterns [/socket/**] in 'stompWebSocketHandlerMapping'
+[2021-09-14 21:28:11:5073][restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 10 mappings in 'requestMappingHandlerMapping'
+[2021-09-14 21:28:12:5731][restartedMain] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**, /resources/**] in 'resourceHandlerMapping'
+[2021-09-14 21:28:12:5901][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	c.m.b.s.c.LoginController:
+	
+[2021-09-14 21:28:12:5902][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	c.m.b.s.c.RoomController:
+	
+[2021-09-14 21:28:12:5904][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	c.m.b.s.c.SocketController:
+	{[MESSAGE],[/chat/send]}: send(AddMessageParam)
+[2021-09-14 21:28:12:5904][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	c.m.b.s.c.UserController:
+	
+[2021-09-14 21:28:12:5904][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	c.m.b.s.c.UtilsController:
+	
+[2021-09-14 21:28:12:5904][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	c.m.b.s.c.v.RestDocsController:
+	
+[2021-09-14 21:28:12:5904][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	c.m.b.s.c.v.SocketViewController:
+	
+[2021-09-14 21:28:12:5905][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	o.s.b.a.w.s.e.BasicErrorController:
+	
+[2021-09-14 21:28:12:6080][restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+[2021-09-14 21:28:12:6150][restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+[2021-09-14 21:28:13:6513][restartedMain] DEBUG org.springframework.web.SimpLogging - clientOutboundChannel added SubProtocolWebSocketHandler[StompSubProtocolHandler[v10.stomp, v11.stomp, v12.stomp]]
+[2021-09-14 21:28:13:6513][restartedMain] DEBUG org.springframework.web.SimpLogging - clientInboundChannel added WebSocketAnnotationMethodMessageHandler[prefixes=[/stream/]]
+[2021-09-14 21:28:13:6513][restartedMain] DEBUG org.springframework.web.SimpLogging - clientInboundChannel added SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@ab7ed95]
+[2021-09-14 21:28:13:6513][restartedMain] DEBUG org.springframework.web.SimpLogging - brokerChannel added SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@ab7ed95]
+[2021-09-14 21:28:13:6513][restartedMain] DEBUG org.springframework.web.SimpLogging - clientInboundChannel added UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+[2021-09-14 21:28:13:6513][restartedMain] DEBUG org.springframework.web.SimpLogging - brokerChannel added UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+[2021-09-14 21:28:21:14835][http-nio-8090-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[2021-09-14 21:28:21:14836][http-nio-8090-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
+[2021-09-14 21:28:21:14836][http-nio-8090-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver
+[2021-09-14 21:28:21:14836][http-nio-8090-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected FixedThemeResolver
+[2021-09-14 21:28:21:14837][http-nio-8090-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@57ef597e
+[2021-09-14 21:28:21:14837][http-nio-8090-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@6f0a4646
+[2021-09-14 21:28:21:14838][http-nio-8090-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+[2021-09-14 21:28:21:14838][http-nio-8090-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+[2021-09-14 21:28:21:14857][http-nio-8090-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to co.mobile.b.server.controller.view.SocketViewController#test()
+[2021-09-14 21:28:21:14867][http-nio-8090-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/socket/test", parameters={}
+[2021-09-14 21:28:21:14868][http-nio-8090-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to co.mobile.b.server.controller.view.SocketViewController#test()
+[2021-09-14 21:28:21:14885][http-nio-8090-exec-1] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, text/html;q=0.8]
+[2021-09-14 21:28:21:15047][http-nio-8090-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2021-09-14 21:28:21:15158][http-nio-8090-exec-2] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [Classpath [META-INF/resources/], Classpath [resources/], Classpath [static/], Classpath [public/], ServletContext [/]]
+[2021-09-14 21:28:21:15163][http-nio-8090-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - "ERROR" dispatch for GET "/error", parameters={}
+[2021-09-14 21:28:21:15165][http-nio-8090-exec-2] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+[2021-09-14 21:28:21:15177][http-nio-8090-exec-2] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json;q=0.8', given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+[2021-09-14 21:28:21:15177][http-nio-8090-exec-2] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [{timestamp=Tue Sep 14 21:28:21 KST 2021, status=403, error=Forbidden, message=Access Denied, path=/f (truncated)...]
+[2021-09-14 21:28:21:15217][http-nio-8090-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Exiting from "ERROR" dispatch, status 403
+[2021-09-14 21:28:32:26081][http-nio-8090-exec-3] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to co.mobile.b.server.controller.RoomController#addRoom(AddRoomParam)
+[2021-09-14 21:28:32:26104][http-nio-8090-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - POST "/api/v1/rooms/", parameters={}
+[2021-09-14 21:28:32:26105][http-nio-8090-exec-3] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to co.mobile.b.server.controller.RoomController#addRoom(AddRoomParam)
+[2021-09-14 21:28:32:26154][http-nio-8090-exec-3] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json;charset=UTF-8" to [AddRoomParam(userKey=abcd-abcd-uuid-test, inviteCode=null)]
+[2021-09-14 21:28:33:26549][http-nio-8090-exec-3] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json]
+[2021-09-14 21:28:33:26559][http-nio-8090-exec-3] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [co.mobile.b.server.config.response.RestResponse@449e343f]
+[2021-09-14 21:28:33:26565][http-nio-8090-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2021-09-14 21:28:41:35040][http-nio-8090-exec-4] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to co.mobile.b.server.controller.RoomController#roomCheck(String)
+[2021-09-14 21:28:41:35045][http-nio-8090-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - GET "/api/v1/rooms/check/6387", parameters={}
+[2021-09-14 21:28:41:35049][http-nio-8090-exec-4] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to co.mobile.b.server.controller.RoomController#roomCheck(String)
+[2021-09-14 21:28:42:35407][http-nio-8090-exec-4] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json]
+[2021-09-14 21:28:42:35407][http-nio-8090-exec-4] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [co.mobile.b.server.config.response.RestResponse@15da9923]
+[2021-09-14 21:28:42:35414][http-nio-8090-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2021-09-14 21:28:42:35427][http-nio-8090-exec-5] DEBUG o.s.w.s.s.s.WebSocketHandlerMapping - Mapped to org.springframework.web.socket.sockjs.support.SockJsHttpRequestHandler@253c496c
+[2021-09-14 21:28:42:35428][http-nio-8090-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - GET "/socket/info?t=1631622522033", parameters={masked}
+[2021-09-14 21:28:42:35428][http-nio-8090-exec-5] DEBUG o.s.w.s.s.s.WebSocketHandlerMapping - Mapped to org.springframework.web.socket.sockjs.support.SockJsHttpRequestHandler@253c496c
+[2021-09-14 21:28:42:35430][http-nio-8090-exec-5] DEBUG o.s.w.s.s.t.h.DefaultSockJsService - Processing transport request: GET http://localhost:8090/socket/info?t=1631622522033
+[2021-09-14 21:28:42:35431][http-nio-8090-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2021-09-14 21:28:42:35437][http-nio-8090-exec-6] DEBUG o.s.w.s.s.s.WebSocketHandlerMapping - Mapped to org.springframework.web.socket.sockjs.support.SockJsHttpRequestHandler@253c496c
+[2021-09-14 21:28:42:35438][http-nio-8090-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - GET "/socket/140/tko250a4/websocket", parameters={}
+[2021-09-14 21:28:42:35439][http-nio-8090-exec-6] DEBUG o.s.w.s.s.s.WebSocketHandlerMapping - Mapped to org.springframework.web.socket.sockjs.support.SockJsHttpRequestHandler@253c496c
+[2021-09-14 21:28:42:35440][http-nio-8090-exec-6] DEBUG o.s.w.s.s.t.h.DefaultSockJsService - Processing transport request: GET http://localhost:8090/socket/140/tko250a4/websocket
+[2021-09-14 21:28:42:35471][http-nio-8090-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - Completed 101 SWITCHING_PROTOCOLS
+[2021-09-14 21:28:42:35478][http-nio-8090-exec-6] DEBUG o.s.w.s.h.LoggingWebSocketHandlerDecorator - New WebSocketServerSockJsSession[id=tko250a4]
+[2021-09-14 21:28:42:35494][clientInboundChannel-2] DEBUG org.springframework.web.SimpLogging - Processing CONNECT session=tko250a4
+[2021-09-14 21:28:42:35533][clientOutboundChannel-1] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/message/6387 session=null payload={"userKey":"test1","positionType":1,"positionName":"탑","content":"test1(탑) �...(truncated)
+[2021-09-14 21:28:42:35541][clientInboundChannel-5] DEBUG org.springframework.web.SimpLogging - Processing SUBSCRIBE /topic/message/6387 id=sub-0 session=tko250a4
+[2021-09-14 21:29:12:65866][MessageBroker-4] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 6, active threads = 0, queued tasks = 0, completed tasks = 6], outboundChannel[pool size = 1, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 8, active threads = 1, queued tasks = 2, completed tasks = 8]

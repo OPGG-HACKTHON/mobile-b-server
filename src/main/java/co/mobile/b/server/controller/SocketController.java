@@ -53,7 +53,7 @@ public class SocketController {
         }
     }
 
-    public void enterBroadcast(String roomCode, String username, int positionType, String sessionId){
+    public void enterBroadcast(String roomCode, String username, int positionType, String sessionId,String UUID){
         AddMessageParam broadCastMessage = new AddMessageParam();
         broadCastMessage.setMessageType(MessageType.JOIN);
         broadCastMessage.setDestRoomCode(roomCode);
@@ -65,7 +65,7 @@ public class SocketController {
         final HashOperations<String, String, String> stringStringHashOperations = redisTemplate.opsForHash();
 
         final String key = "room-" + roomCode;
-        UserConnectionInfo connInfo = new UserConnectionInfo(username,positionType,roomCode);
+        UserConnectionInfo connInfo = new UserConnectionInfo(username,positionType,roomCode,UUID);
 
         MessageResult msgResult = new MessageResult(broadCastMessage);
         try{

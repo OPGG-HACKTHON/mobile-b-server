@@ -40,9 +40,10 @@ public class SocketEventHandler {
         String inviteCode = (String)nativeHeaders.get("inviteCode").get(0);
         String username = (String) nativeHeaders.get("username").get(0);
         int positionType = Integer.parseInt((String)nativeHeaders.get("positionType").get(0));
+        String UUID = (String) nativeHeaders.get("uuid").get(0);
         String sessionId = headerAccessor.getSessionId();
 
-        socketController.enterBroadcast(inviteCode,username,positionType,sessionId);
+        socketController.enterBroadcast(inviteCode,username,positionType,sessionId,UUID);
     }
 
 
