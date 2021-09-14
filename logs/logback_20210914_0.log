@@ -82,3 +82,163 @@
 [2021-09-14 21:28:42:35533][clientOutboundChannel-1] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/message/6387 session=null payload={"userKey":"test1","positionType":1,"positionName":"탑","content":"test1(탑) �...(truncated)
 [2021-09-14 21:28:42:35541][clientInboundChannel-5] DEBUG org.springframework.web.SimpLogging - Processing SUBSCRIBE /topic/message/6387 id=sub-0 session=tko250a4
 [2021-09-14 21:29:12:65866][MessageBroker-4] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 6, active threads = 0, queued tasks = 0, completed tasks = 6], outboundChannel[pool size = 1, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 8, active threads = 1, queued tasks = 2, completed tasks = 8]
+[2021-09-14 21:42:45:878459][SpringApplicationShutdownHook] DEBUG org.springframework.web.SimpLogging - clientOutboundChannel removed SubProtocolWebSocketHandler[StompSubProtocolHandler[v10.stomp, v11.stomp, v12.stomp]]
+[2021-09-14 21:42:45:878461][SpringApplicationShutdownHook] DEBUG o.s.w.s.s.t.s.WebSocketServerSockJsSession - Closing SockJS session tko250a4 with CloseStatus[code=1001, reason=null]
+[2021-09-14 21:42:45:878461][SpringApplicationShutdownHook] DEBUG o.s.w.s.a.NativeWebSocketSession - Closing StandardWebSocketSession[id=f6d700be-a214-a3a5-e903-89fd949e9b53, uri=ws://localhost:8090/socket/140/tko250a4/websocket]
+[2021-09-14 21:42:45:878463][SpringApplicationShutdownHook] DEBUG o.s.w.s.h.LoggingWebSocketHandlerDecorator - WebSocketServerSockJsSession[id=tko250a4] closed with CloseStatus[code=1001, reason=null]
+[2021-09-14 21:42:45:878463][SpringApplicationShutdownHook] DEBUG o.s.w.s.m.SubProtocolWebSocketHandler - Clearing session tko250a4
+[2021-09-14 21:42:45:878498][SpringApplicationShutdownHook] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/message/6387 session=null payload={"userKey":"test1","positionType":1,"positionName":"탑","content":"test1(탑) �...(truncated)
+[2021-09-14 21:42:45:878499][SpringApplicationShutdownHook] DEBUG org.springframework.web.SimpLogging - Broadcasting to 1 sessions.
+[2021-09-14 21:42:45:878500][clientInboundChannel-8] DEBUG org.springframework.web.SimpLogging - Processing DISCONNECT session=tko250a4
+[2021-09-14 21:42:45:878506][SpringApplicationShutdownHook] DEBUG org.springframework.web.SimpLogging - clientInboundChannel removed WebSocketAnnotationMethodMessageHandler[prefixes=[/stream/]]
+[2021-09-14 21:42:45:878508][SpringApplicationShutdownHook] DEBUG org.springframework.web.SimpLogging - clientInboundChannel removed SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@ab7ed95]
+[2021-09-14 21:42:45:878508][SpringApplicationShutdownHook] DEBUG org.springframework.web.SimpLogging - brokerChannel removed SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@ab7ed95]
+[2021-09-14 21:42:45:878508][SpringApplicationShutdownHook] DEBUG org.springframework.web.SimpLogging - clientInboundChannel removed UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+[2021-09-14 21:42:45:878508][SpringApplicationShutdownHook] DEBUG org.springframework.web.SimpLogging - brokerChannel removed UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+[2021-09-14 21:43:16:4410][restartedMain] DEBUG o.s.w.s.r.ResourceUrlEncodingFilter - Filter 'resourceUrlEncodingFilter' configured for use
+[2021-09-14 21:43:16:4411][restartedMain] DEBUG o.s.w.f.CharacterEncodingFilter - Filter 'characterEncodingFilter' configured for use
+[2021-09-14 21:43:16:4898][restartedMain] DEBUG o.s.w.s.s.s.WebSocketHandlerMapping - Patterns [/socket/**] in 'stompWebSocketHandlerMapping'
+[2021-09-14 21:43:16:4958][restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 10 mappings in 'requestMappingHandlerMapping'
+[2021-09-14 21:43:17:5593][restartedMain] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**, /resources/**] in 'resourceHandlerMapping'
+[2021-09-14 21:43:17:5754][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	c.m.b.s.c.LoginController:
+	
+[2021-09-14 21:43:17:5754][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	c.m.b.s.c.RoomController:
+	
+[2021-09-14 21:43:17:5760][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	c.m.b.s.c.SocketController:
+	{[MESSAGE],[/chat/send]}: send(AddMessageParam)
+[2021-09-14 21:43:17:5761][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	c.m.b.s.c.UserController:
+	
+[2021-09-14 21:43:17:5761][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	c.m.b.s.c.UtilsController:
+	
+[2021-09-14 21:43:17:5761][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	c.m.b.s.c.v.RestDocsController:
+	
+[2021-09-14 21:43:17:5761][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	c.m.b.s.c.v.SocketViewController:
+	
+[2021-09-14 21:43:17:5762][restartedMain] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	o.s.b.a.w.s.e.BasicErrorController:
+	
+[2021-09-14 21:43:17:5905][restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+[2021-09-14 21:43:17:5956][restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+[2021-09-14 21:43:18:6266][restartedMain] DEBUG org.springframework.web.SimpLogging - clientOutboundChannel added SubProtocolWebSocketHandler[StompSubProtocolHandler[v10.stomp, v11.stomp, v12.stomp]]
+[2021-09-14 21:43:18:6266][restartedMain] DEBUG org.springframework.web.SimpLogging - clientInboundChannel added WebSocketAnnotationMethodMessageHandler[prefixes=[/stream/]]
+[2021-09-14 21:43:18:6266][restartedMain] DEBUG org.springframework.web.SimpLogging - clientInboundChannel added SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@37759329]
+[2021-09-14 21:43:18:6266][restartedMain] DEBUG org.springframework.web.SimpLogging - brokerChannel added SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@37759329]
+[2021-09-14 21:43:18:6266][restartedMain] DEBUG org.springframework.web.SimpLogging - clientInboundChannel added UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+[2021-09-14 21:43:18:6266][restartedMain] DEBUG org.springframework.web.SimpLogging - brokerChannel added UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+[2021-09-14 21:43:24:12648][http-nio-8090-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[2021-09-14 21:43:24:12649][http-nio-8090-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
+[2021-09-14 21:43:24:12649][http-nio-8090-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver
+[2021-09-14 21:43:24:12649][http-nio-8090-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected FixedThemeResolver
+[2021-09-14 21:43:24:12650][http-nio-8090-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@348509e4
+[2021-09-14 21:43:24:12650][http-nio-8090-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@65e03f5d
+[2021-09-14 21:43:24:12651][http-nio-8090-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+[2021-09-14 21:43:24:12651][http-nio-8090-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+[2021-09-14 21:43:24:12666][http-nio-8090-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to co.mobile.b.server.controller.view.SocketViewController#test()
+[2021-09-14 21:43:24:12675][http-nio-8090-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/socket/test", parameters={}
+[2021-09-14 21:43:24:12676][http-nio-8090-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to co.mobile.b.server.controller.view.SocketViewController#test()
+[2021-09-14 21:43:24:12692][http-nio-8090-exec-1] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, text/html;q=0.8]
+[2021-09-14 21:43:24:12823][http-nio-8090-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2021-09-14 21:43:24:13081][http-nio-8090-exec-2] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [Classpath [META-INF/resources/], Classpath [resources/], Classpath [static/], Classpath [public/], ServletContext [/]]
+[2021-09-14 21:43:24:13093][http-nio-8090-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - "ERROR" dispatch for GET "/error", parameters={}
+[2021-09-14 21:43:24:13104][http-nio-8090-exec-2] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+[2021-09-14 21:43:24:13146][http-nio-8090-exec-2] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json;q=0.8', given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+[2021-09-14 21:43:24:13147][http-nio-8090-exec-2] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [{timestamp=Tue Sep 14 21:43:24 KST 2021, status=403, error=Forbidden, message=Access Denied, path=/f (truncated)...]
+[2021-09-14 21:43:24:13204][http-nio-8090-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Exiting from "ERROR" dispatch, status 403
+[2021-09-14 21:43:32:20237][http-nio-8090-exec-3] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to co.mobile.b.server.controller.RoomController#addRoom(AddRoomParam)
+[2021-09-14 21:43:32:20256][http-nio-8090-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - POST "/api/v1/rooms/", parameters={}
+[2021-09-14 21:43:32:20258][http-nio-8090-exec-3] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to co.mobile.b.server.controller.RoomController#addRoom(AddRoomParam)
+[2021-09-14 21:43:32:20309][http-nio-8090-exec-3] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json;charset=UTF-8" to [AddRoomParam(userKey=test-uuid-0001, inviteCode=null)]
+[2021-09-14 21:43:32:20599][http-nio-8090-exec-3] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json]
+[2021-09-14 21:43:32:20603][http-nio-8090-exec-3] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [co.mobile.b.server.config.response.RestResponse@3669042b]
+[2021-09-14 21:43:32:20608][http-nio-8090-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2021-09-14 21:43:36:24475][http-nio-8090-exec-4] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to co.mobile.b.server.controller.RoomController#roomCheck(String)
+[2021-09-14 21:43:36:24480][http-nio-8090-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - GET "/api/v1/rooms/check/5756", parameters={}
+[2021-09-14 21:43:36:24485][http-nio-8090-exec-4] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to co.mobile.b.server.controller.RoomController#roomCheck(String)
+[2021-09-14 21:43:36:24836][http-nio-8090-exec-4] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json]
+[2021-09-14 21:43:36:24837][http-nio-8090-exec-4] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [co.mobile.b.server.config.response.RestResponse@26506079]
+[2021-09-14 21:43:36:24844][http-nio-8090-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2021-09-14 21:43:36:24851][http-nio-8090-exec-5] DEBUG o.s.w.s.s.s.WebSocketHandlerMapping - Mapped to org.springframework.web.socket.sockjs.support.SockJsHttpRequestHandler@45c91c43
+[2021-09-14 21:43:36:24852][http-nio-8090-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - GET "/socket/info?t=1631623416613", parameters={masked}
+[2021-09-14 21:43:36:24852][http-nio-8090-exec-5] DEBUG o.s.w.s.s.s.WebSocketHandlerMapping - Mapped to org.springframework.web.socket.sockjs.support.SockJsHttpRequestHandler@45c91c43
+[2021-09-14 21:43:36:24854][http-nio-8090-exec-5] DEBUG o.s.w.s.s.t.h.DefaultSockJsService - Processing transport request: GET http://localhost:8090/socket/info?t=1631623416613
+[2021-09-14 21:43:36:24855][http-nio-8090-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2021-09-14 21:43:36:24861][http-nio-8090-exec-6] DEBUG o.s.w.s.s.s.WebSocketHandlerMapping - Mapped to org.springframework.web.socket.sockjs.support.SockJsHttpRequestHandler@45c91c43
+[2021-09-14 21:43:36:24862][http-nio-8090-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - GET "/socket/810/bgwevuzj/websocket", parameters={}
+[2021-09-14 21:43:36:24863][http-nio-8090-exec-6] DEBUG o.s.w.s.s.s.WebSocketHandlerMapping - Mapped to org.springframework.web.socket.sockjs.support.SockJsHttpRequestHandler@45c91c43
+[2021-09-14 21:43:36:24864][http-nio-8090-exec-6] DEBUG o.s.w.s.s.t.h.DefaultSockJsService - Processing transport request: GET http://localhost:8090/socket/810/bgwevuzj/websocket
+[2021-09-14 21:43:36:24887][http-nio-8090-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - Completed 101 SWITCHING_PROTOCOLS
+[2021-09-14 21:43:36:24894][http-nio-8090-exec-6] DEBUG o.s.w.s.h.LoggingWebSocketHandlerDecorator - New WebSocketServerSockJsSession[id=bgwevuzj]
+[2021-09-14 21:43:36:24910][clientInboundChannel-2] DEBUG org.springframework.web.SimpLogging - Processing CONNECT session=bgwevuzj
+[2021-09-14 21:43:36:24948][clientOutboundChannel-1] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/message/5756 session=null payload={"userKey":"test1","positionType":1,"positionName":"탑","content":"test1(탑) �...(truncated)
+[2021-09-14 21:43:36:24954][clientInboundChannel-5] DEBUG org.springframework.web.SimpLogging - Processing SUBSCRIBE /topic/message/5756 id=sub-0 session=bgwevuzj
+[2021-09-14 21:43:59:47929][http-nio-8090-exec-8] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to co.mobile.b.server.controller.view.SocketViewController#test()
+[2021-09-14 21:43:59:47936][http-nio-8090-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - GET "/socket/test", parameters={}
+[2021-09-14 21:43:59:47937][http-nio-8090-exec-8] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to co.mobile.b.server.controller.view.SocketViewController#test()
+[2021-09-14 21:43:59:47956][http-nio-8090-exec-8] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, text/html;q=0.8]
+[2021-09-14 21:43:59:47969][http-nio-8090-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2021-09-14 21:43:59:48105][http-nio-8090-exec-9] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [Classpath [META-INF/resources/], Classpath [resources/], Classpath [static/], Classpath [public/], ServletContext [/]]
+[2021-09-14 21:43:59:48108][http-nio-8090-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - "ERROR" dispatch for GET "/error", parameters={}
+[2021-09-14 21:43:59:48109][http-nio-8090-exec-9] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+[2021-09-14 21:43:59:48114][http-nio-8090-exec-9] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json;q=0.8', given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8] and supported [application/json, application/*+json, application/json, application/*+json]
+[2021-09-14 21:43:59:48115][http-nio-8090-exec-9] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [{timestamp=Tue Sep 14 21:43:59 KST 2021, status=403, error=Forbidden, message=Access Denied, path=/f (truncated)...]
+[2021-09-14 21:43:59:48120][http-nio-8090-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - Exiting from "ERROR" dispatch, status 403
+[2021-09-14 21:44:14:62507][http-nio-8090-exec-10] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to co.mobile.b.server.controller.RoomController#addRoom(AddRoomParam)
+[2021-09-14 21:44:14:62513][http-nio-8090-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - POST "/api/v1/rooms/", parameters={}
+[2021-09-14 21:44:14:62515][http-nio-8090-exec-10] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to co.mobile.b.server.controller.RoomController#addRoom(AddRoomParam)
+[2021-09-14 21:44:14:62521][http-nio-8090-exec-10] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json;charset=UTF-8" to [AddRoomParam(userKey=test-uuid-0002, inviteCode=null)]
+[2021-09-14 21:44:14:62546][http-nio-8090-exec-10] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json]
+[2021-09-14 21:44:14:62547][http-nio-8090-exec-10] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [co.mobile.b.server.config.response.RestResponse@32073480]
+[2021-09-14 21:44:14:62549][http-nio-8090-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2021-09-14 21:44:16:64602][http-nio-8090-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to co.mobile.b.server.controller.RoomController#roomCheck(String)
+[2021-09-14 21:44:16:64604][http-nio-8090-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/api/v1/rooms/check/5756", parameters={}
+[2021-09-14 21:44:16:64613][http-nio-8090-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to co.mobile.b.server.controller.RoomController#roomCheck(String)
+[2021-09-14 21:44:16:64630][http-nio-8090-exec-1] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json]
+[2021-09-14 21:44:16:64632][http-nio-8090-exec-1] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [co.mobile.b.server.config.response.RestResponse@261b6706]
+[2021-09-14 21:44:16:64637][http-nio-8090-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2021-09-14 21:44:16:64648][http-nio-8090-exec-2] DEBUG o.s.w.s.s.s.WebSocketHandlerMapping - Mapped to org.springframework.web.socket.sockjs.support.SockJsHttpRequestHandler@45c91c43
+[2021-09-14 21:44:16:64650][http-nio-8090-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - GET "/socket/info?t=1631623456409", parameters={masked}
+[2021-09-14 21:44:16:64651][http-nio-8090-exec-2] DEBUG o.s.w.s.s.s.WebSocketHandlerMapping - Mapped to org.springframework.web.socket.sockjs.support.SockJsHttpRequestHandler@45c91c43
+[2021-09-14 21:44:16:64653][http-nio-8090-exec-2] DEBUG o.s.w.s.s.t.h.DefaultSockJsService - Processing transport request: GET http://localhost:8090/socket/info?t=1631623456409
+[2021-09-14 21:44:16:64655][http-nio-8090-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2021-09-14 21:44:16:64663][http-nio-8090-exec-3] DEBUG o.s.w.s.s.s.WebSocketHandlerMapping - Mapped to org.springframework.web.socket.sockjs.support.SockJsHttpRequestHandler@45c91c43
+[2021-09-14 21:44:16:64666][http-nio-8090-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - GET "/socket/547/kwq1rvci/websocket", parameters={}
+[2021-09-14 21:44:16:64667][http-nio-8090-exec-3] DEBUG o.s.w.s.s.s.WebSocketHandlerMapping - Mapped to org.springframework.web.socket.sockjs.support.SockJsHttpRequestHandler@45c91c43
+[2021-09-14 21:44:16:64672][http-nio-8090-exec-3] DEBUG o.s.w.s.s.t.h.DefaultSockJsService - Processing transport request: GET http://localhost:8090/socket/547/kwq1rvci/websocket
+[2021-09-14 21:44:16:64679][http-nio-8090-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 101 SWITCHING_PROTOCOLS
+[2021-09-14 21:44:16:64680][http-nio-8090-exec-3] DEBUG o.s.w.s.h.LoggingWebSocketHandlerDecorator - New WebSocketServerSockJsSession[id=kwq1rvci]
+[2021-09-14 21:44:16:64684][clientInboundChannel-8] DEBUG org.springframework.web.SimpLogging - Processing CONNECT session=kwq1rvci
+[2021-09-14 21:44:16:64692][clientOutboundChannel-2] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/message/5756 session=null payload={"userKey":"test2","positionType":2,"positionName":"정글","content":"test2(정...(truncated)
+[2021-09-14 21:44:16:64692][clientOutboundChannel-2] DEBUG org.springframework.web.SimpLogging - Broadcasting to 1 sessions.
+[2021-09-14 21:44:16:64697][clientInboundChannel-11] DEBUG org.springframework.web.SimpLogging - Processing SUBSCRIBE /topic/message/5756 id=sub-0 session=kwq1rvci
+[2021-09-14 21:44:17:65715][MessageBroker-6] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[2 current WS(2)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 12, active threads = 0, queued tasks = 0, completed tasks = 12], outboundChannel[pool size = 3, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 8, active threads = 1, queued tasks = 3, completed tasks = 10]
+[2021-09-14 21:44:22:71049][clientInboundChannel-13] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - Searching methods to handle SEND /stream/chat/send session=bgwevuzj, lookupDestination='/chat/send'
+[2021-09-14 21:44:22:71053][clientInboundChannel-13] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - Invoking SocketController#send[1 args]
+[2021-09-14 21:44:22:71115][clientInboundChannel-13] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/message/5756 session=null payload={"userKey":"test1","positionType":1,"positionName":"탑","content":"hi","message...(truncated)
+[2021-09-14 21:44:22:71115][clientInboundChannel-13] DEBUG org.springframework.web.SimpLogging - Broadcasting to 2 sessions.
+[2021-09-14 21:45:35:143843][SpringApplicationShutdownHook] DEBUG org.springframework.web.SimpLogging - clientOutboundChannel removed SubProtocolWebSocketHandler[StompSubProtocolHandler[v10.stomp, v11.stomp, v12.stomp]]
+[2021-09-14 21:45:35:143844][SpringApplicationShutdownHook] DEBUG o.s.w.s.s.t.s.WebSocketServerSockJsSession - Closing SockJS session kwq1rvci with CloseStatus[code=1001, reason=null]
+[2021-09-14 21:45:35:143844][SpringApplicationShutdownHook] DEBUG o.s.w.s.a.NativeWebSocketSession - Closing StandardWebSocketSession[id=6ebc1876-a927-f526-d542-b3930eedb224, uri=ws://localhost:8090/socket/547/kwq1rvci/websocket]
+[2021-09-14 21:45:35:143845][SpringApplicationShutdownHook] DEBUG o.s.w.s.h.LoggingWebSocketHandlerDecorator - WebSocketServerSockJsSession[id=kwq1rvci] closed with CloseStatus[code=1001, reason=null]
+[2021-09-14 21:45:35:143845][SpringApplicationShutdownHook] DEBUG o.s.w.s.m.SubProtocolWebSocketHandler - Clearing session kwq1rvci
+[2021-09-14 21:45:35:143858][SpringApplicationShutdownHook] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/message/5756 session=null payload={"userKey":"test2","positionType":2,"positionName":"정글","content":"test2(정...(truncated)
+[2021-09-14 21:45:35:143858][SpringApplicationShutdownHook] DEBUG org.springframework.web.SimpLogging - Broadcasting to 2 sessions.
+[2021-09-14 21:45:35:143859][clientInboundChannel-17] DEBUG org.springframework.web.SimpLogging - Processing DISCONNECT session=kwq1rvci
+[2021-09-14 21:45:35:143860][SpringApplicationShutdownHook] DEBUG o.s.w.s.s.t.s.WebSocketServerSockJsSession - Closing SockJS session bgwevuzj with CloseStatus[code=1001, reason=null]
+[2021-09-14 21:45:35:143860][SpringApplicationShutdownHook] DEBUG o.s.w.s.a.NativeWebSocketSession - Closing StandardWebSocketSession[id=03241201-23a8-22ac-b042-48c0ac600578, uri=ws://localhost:8090/socket/810/bgwevuzj/websocket]
+[2021-09-14 21:45:35:143860][SpringApplicationShutdownHook] DEBUG o.s.w.s.h.LoggingWebSocketHandlerDecorator - WebSocketServerSockJsSession[id=bgwevuzj] closed with CloseStatus[code=1001, reason=null]
+[2021-09-14 21:45:35:143860][SpringApplicationShutdownHook] DEBUG o.s.w.s.m.SubProtocolWebSocketHandler - Clearing session bgwevuzj
+[2021-09-14 21:45:35:143863][SpringApplicationShutdownHook] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/message/5756 session=null payload={"userKey":"test1","positionType":1,"positionName":"탑","content":"test1(탑) �...(truncated)
+[2021-09-14 21:45:35:143863][SpringApplicationShutdownHook] DEBUG org.springframework.web.SimpLogging - Broadcasting to 1 sessions.
+[2021-09-14 21:45:35:143864][clientInboundChannel-20] DEBUG org.springframework.web.SimpLogging - Processing DISCONNECT session=bgwevuzj
+[2021-09-14 21:45:35:143864][SpringApplicationShutdownHook] DEBUG org.springframework.web.SimpLogging - clientInboundChannel removed WebSocketAnnotationMethodMessageHandler[prefixes=[/stream/]]
+[2021-09-14 21:45:35:143864][SpringApplicationShutdownHook] DEBUG org.springframework.web.SimpLogging - clientInboundChannel removed SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@37759329]
+[2021-09-14 21:45:35:143864][SpringApplicationShutdownHook] DEBUG org.springframework.web.SimpLogging - brokerChannel removed SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@37759329]
+[2021-09-14 21:45:35:143864][SpringApplicationShutdownHook] DEBUG org.springframework.web.SimpLogging - clientInboundChannel removed UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+[2021-09-14 21:45:35:143864][SpringApplicationShutdownHook] DEBUG org.springframework.web.SimpLogging - brokerChannel removed UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]

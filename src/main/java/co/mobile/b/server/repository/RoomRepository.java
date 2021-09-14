@@ -13,4 +13,6 @@ public interface RoomRepository extends JpaRepository<Room, Long> {
     Optional<Room> findByUserKeyAndDeletedFalse(String inviteCode);
 
     Optional<Room> findByInviteCodeAndAndDeletedFalse(String inviteCode);
+
+    Boolean existsByInviteCodeAndAndUserKeyAndDeletedIsFalse(String inviteCode, String userKey);
 }

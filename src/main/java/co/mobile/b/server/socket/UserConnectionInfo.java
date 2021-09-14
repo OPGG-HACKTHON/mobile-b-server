@@ -14,4 +14,5 @@ public class UserConnectionInfo {
     private int positionType;
     private String roomCode;
     private String uuid;
+    private Boolean isRoomHost;
 }

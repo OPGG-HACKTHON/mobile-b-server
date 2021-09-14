@@ -75,4 +75,8 @@ public class RoomServiceImpl implements RoomService{
         return inviteCode;
     }
 
+    @Override
+    public Boolean isRoomHost(String intviteCode, String uuid) throws Exception {
+        return roomRepository.existsByInviteCodeAndAndUserKeyAndDeletedIsFalse(intviteCode,uuid);
+    }
 }

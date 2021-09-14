@@ -28,7 +28,7 @@ public class SocketEventHandler {
      * @param event the event
      */
     @EventListener
-    public void handleWebSocketConnectListener(SessionConnectedEvent event) {
+    public void handleWebSocketConnectListener(SessionConnectedEvent event) throws Exception{
         StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
 
         GenericMessage msg = (GenericMessage) headerAccessor.getMessageHeaders().get("simpConnectMessage");
