@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.hateoas.MediaTypes;
+import org.springframework.http.MediaType;
 import org.springframework.restdocs.payload.JsonFieldType;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -24,8 +25,8 @@ class UtilsControllerTest extends AbstractControllerTest {
     @Order(1)
     void getPositionTest() throws Exception {
         mockMvc.perform(get(BASE_URL+"/position")
-                        .accept(MediaTypes.HAL_JSON_VALUE)
-                        .contentType(MediaTypes.HAL_JSON_VALUE))
+                        .accept(MediaType.APPLICATION_JSON_VALUE)
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andDo(

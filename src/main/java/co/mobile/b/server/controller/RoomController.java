@@ -5,6 +5,7 @@ import co.mobile.b.server.service.RoomService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.hateoas.MediaTypes;
+import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,7 @@ public class RoomController {
      * @return the object
      * @throws Exception the exception
      */
-    @PostMapping(produces = MediaTypes.HAL_JSON_VALUE, consumes = MediaTypes.HAL_JSON_VALUE)
+    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public Object addRoom(@RequestBody @Validated AddRoomParam addRoomParam) throws Exception{
         return roomService.addRoom(addRoomParam);
     }
@@ -35,7 +36,7 @@ public class RoomController {
      * @return the room
      * @throws Exception the exception
      */
-    @GetMapping(value = "/{userKey}",produces = MediaTypes.HAL_JSON_VALUE)
+    @GetMapping(value = "/{userKey}",produces = MediaType.APPLICATION_JSON_VALUE)
     public Object getRoom(@PathVariable("userKey") String userKey) throws Exception {
         return roomService.getRoom(userKey);
     }
@@ -47,7 +48,7 @@ public class RoomController {
      * @return the room
      * @throws Exception the exception
      */
-    @GetMapping(value = "/check/{inviteCode}",produces = MediaTypes.HAL_JSON_VALUE)
+    @GetMapping(value = "/check/{inviteCode}",produces = MediaType.APPLICATION_JSON_VALUE)
     public Object roomCheck(@PathVariable("inviteCode") String inviteCode) throws Exception {
         return roomService.roomCheck(inviteCode);
     }

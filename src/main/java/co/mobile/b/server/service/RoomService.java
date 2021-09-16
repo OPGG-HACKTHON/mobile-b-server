@@ -10,4 +10,6 @@ public interface RoomService {
     RoomResult getRoom(String userKey) throws Exception ;
 
     RoomCheckResult roomCheck(String inviteCode) throws Exception;
+
+    Boolean isRoomHost(String intviteCode, String uuid) throws Exception;
 }

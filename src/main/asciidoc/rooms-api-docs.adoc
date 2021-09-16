@@ -21,6 +21,7 @@ include::{snippets}/room-controller-test/add-room-test/http-request.adoc[]
 요청 형식
 
 include::{snippets}/room-controller-test/add-room-test/request-body.adoc[]
+include::{snippets}/room-controller-test/add-room-test/request-fields.adoc[]
 
 응답 정보
 
