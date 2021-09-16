@@ -22,7 +22,7 @@ public class HttpHandshakeInterceptor implements HandshakeInterceptor {
             ServletServerHttpRequest servletRequest = (ServletServerHttpRequest) request;
             HttpSession session = servletRequest.getServletRequest().getSession();
             attributes.put(SESSION, session);
-            log.info("beforeHandshake : Session Id. [{}]", session.getId());
+            log.info("[ beforeHandshake / Session Id : {} ]", session.getId());
         }
         return true;
     }
@@ -30,6 +30,6 @@ public class HttpHandshakeInterceptor implements HandshakeInterceptor {
     @Override
     public void afterHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler,
                                Exception ex) {
-        log.info("afterHandshake.");
+        log.info("[ afterHandshake ]");
     }
 }

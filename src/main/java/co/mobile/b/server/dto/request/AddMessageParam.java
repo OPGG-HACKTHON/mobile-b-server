@@ -15,7 +15,6 @@ import javax.validation.constraints.NotNull;
 @Setter
 @ToString
 public class AddMessageParam {
-    // TODO : message 를 프로퍼티로 다 뺄 것
     @NotEmpty(message = "userKey를 입력하세요.")
     private String userKey;
     @Min(value = 1, message = "포지션 타입 범위가 아닙니다.")
@@ -25,6 +24,6 @@ public class AddMessageParam {
     private String content;
     @NotNull(message = "messageType를 입력하세요.")
     private MessageType messageType;
-    // 목적지 방 코드
-    private String destRoomCode;
+    @NotEmpty(message = "초대코드를 입력하세요.")
+    private String inviteCode;
 }
