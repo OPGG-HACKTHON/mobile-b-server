@@ -12,9 +12,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-/**
- * The type Redis util.
- */
 @AllArgsConstructor
 @Component
 public class RedisUtil {

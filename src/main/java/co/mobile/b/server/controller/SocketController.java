@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class SocketController {
 
     @Value("${stomp.send.to}")
-    private String sendTo;
+    private String SEND_TO;
 
     private final SimpMessageSendingOperations simpMessageSendingOperations;
     private final RoomService roomService;
@@ -33,7 +33,7 @@ public class SocketController {
         MessageResult msgResult = new MessageResult(addMessageParam);
         redisUtil.saveRoomLog(addMessageParam.getInviteCode(), msgResult);
 
-        String broadcastURL = sendTo + addMessageParam.getInviteCode();
+        String broadcastURL = SEND_TO + addMessageParam.getInviteCode();
         simpMessageSendingOperations.convertAndSend(broadcastURL, msgResult);
     }
 
@@ -45,19 +45,36 @@ public class SocketController {
         redisUtil.saveConnections(userConnectionInfo);
         redisUtil.saveRoomLog(userConnectionInfo.getInviteCode(), msgResult);
 
-        String broadcastURL = sendTo + userConnectionInfo.getInviteCode();
+
+        log.info("==================== ENTER BROADCAST ====================");
+        log.info("USER_NAME : {}", userConnectionInfo.getUserName());
+        log.info("USER_KEY : {}", userConnectionInfo.getUserKey());
+        log.info("SESSION_ID : {}", userConnectionInfo.getSessionId());
+        log.info("POSITION : {}", Position.valueOf(userConnectionInfo.getPositionType()));
+        log.info("INVITE_CODE : {}", userConnectionInfo.getInviteCode());
+        log.info("IS_ROOM_HOST : {}", userConnectionInfo.getIsRoomHost());
+        log.info("=========================================================");
+
+
+        String broadcastURL = SEND_TO + userConnectionInfo.getInviteCode();
         simpMessageSendingOperations.convertAndSend(broadcastURL, msgResult);
     }
 
+
     public void exitBroadcast(String sessionId) throws Exception {
         UserConnectionInfo userConnectionInfo = redisUtil.getConnections(sessionId);
-        redisUtil.deleteConnections(sessionId);
-
         String content = setMessage(MessageType.LEAVE, userConnectionInfo.getUserName(), userConnectionInfo.getPositionType());
+
+        if(userConnectionInfo.getIsRoomHost()) {
+            roomService.delRoom(userConnectionInfo.getInviteCode());
+            content = "채팅이 종료되었습니다.";
+        }
+
         MessageResult msgResult = new MessageResult(userConnectionInfo, MessageType.LEAVE, content);
         redisUtil.saveRoomLog(userConnectionInfo.getInviteCode(), msgResult);
 
-        String broadcastURL = sendTo + userConnectionInfo.getInviteCode();
+        redisUtil.deleteConnections(sessionId);
+        String broadcastURL = SEND_TO + userConnectionInfo.getInviteCode();
         simpMessageSendingOperations.convertAndSend(broadcastURL, msgResult);
     }
 

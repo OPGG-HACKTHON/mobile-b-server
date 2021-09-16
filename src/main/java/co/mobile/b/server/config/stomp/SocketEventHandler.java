@@ -33,7 +33,7 @@ public class SocketEventHandler {
      */
     @EventListener
     public void handleWebSocketConnectListener(SessionConnectedEvent event) throws Exception{
-        log.info("[ handleWebSocketConnectListener ]");
+        log.debug("[ handleWebSocketConnectListener ]");
         socketController.enterBroadcast(getUserInfoBySession(event));
     }
 
@@ -44,10 +44,10 @@ public class SocketEventHandler {
      */
     @EventListener
     public void handleWebSocketDisConnectListener(SessionDisconnectEvent event) throws Exception {
-        log.info("[ handleWebSocketDisConnectListener ]");
+        log.debug("[ handleWebSocketDisConnectListener ]");
         StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
 
-        log.info("Web socket session closed. Session ID : [{}]", headerAccessor.getSessionId());
+        log.info("===== SOCKET DISCONNECT. Session ID : [{}] =====", headerAccessor.getSessionId());
 
         socketController.exitBroadcast(headerAccessor.getSessionId());
     }
@@ -90,7 +90,7 @@ public class SocketEventHandler {
                 .orElseThrow(() -> new RuntimeException("유저키를 입력하세요.")).get(0);
         String sessionId = headerAccessor.getSessionId();
 
-        log.info("getUserInfo Session ID : [{}]", sessionId);
+        log.info("===== SOCKET CONNECT Session ID : [{}] =====", sessionId);
 
         return new UserConnectionInfo(userName, positionType, inviteCode, userKey, sessionId);
     }
