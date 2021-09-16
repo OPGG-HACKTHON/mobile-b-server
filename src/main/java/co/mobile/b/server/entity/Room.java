@@ -6,6 +6,7 @@ import lombok.*;
 
 import javax.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 import static javax.persistence.FetchType.LAZY;
@@ -40,5 +41,10 @@ public class Room extends BaseEntity{
     public Room(AddRoomParam addRoomParam) {
         this.userKey = addRoomParam.getUserKey();
         this.inviteCode = addRoomParam.getInviteCode();
+    }
+
+    public void delRoom(){
+        this.deleted = true;
+        this.deletedAt = LocalDateTime.now();
     }
 }

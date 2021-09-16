@@ -9,13 +9,11 @@ import co.mobile.b.server.util.RedisUtil;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.redis.core.ListOperations;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
+import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 @Service
 public class RoomServiceImpl implements RoomService{
 
@@ -23,13 +21,13 @@ public class RoomServiceImpl implements RoomService{
     private final RedisUtil redisUtil;
 
     @Value("${app.domain}")
-    private String appDomain;
+    private String APP_DOMAIN;
 
     @Value("${stomp.message.mapping}")
-    private String messageMapping;
+    private String MESSAGE_MAPPING;
 
     @Value("${stomp.send.to}")
-    private String sendTo;
+    private String SEND_TO;
 
     public RoomResult addRoom(AddRoomParam addRoomParam) throws Exception {
         if(roomRepository.existsByUserKeyAndAndDeletedIsFalse(addRoomParam.getUserKey())) {
@@ -44,23 +42,30 @@ public class RoomServiceImpl implements RoomService{
             }
         }
 
-        return new RoomResult(roomRepository.save(new Room(addRoomParam)), appDomain);
+        return new RoomResult(roomRepository.save(new Room(addRoomParam)), APP_DOMAIN);
     }
 
     @Override
     public RoomResult getRoom(String userKey) throws Exception {
-        return new RoomResult(roomRepository.findByUserKeyAndDeletedFalse(userKey).orElseThrow(() -> new RuntimeException("해당 유저의 방이 존재 하지 않습니다.")), appDomain);
+        return new RoomResult(roomRepository.findByUserKeyAndDeletedFalse(userKey).orElseThrow(() -> new RuntimeException("해당 유저의 방이 존재 하지 않습니다.")), APP_DOMAIN);
     }
 
     @Override
     public RoomCheckResult roomCheck(String inviteCode) throws Exception {
         Room room = roomRepository.findByInviteCodeAndAndDeletedFalse(inviteCode).orElseThrow(() -> new RuntimeException("초대코드가 유효하지 않습니다."));
-        return new RoomCheckResult(room, messageMapping, sendTo, redisUtil.getRoomLog(inviteCode));
+        return new RoomCheckResult(room, MESSAGE_MAPPING, SEND_TO, redisUtil.getRoomLog(inviteCode));
     }
 
     @Override
     public Boolean isRoomHost(String inviteCode, String userKey) throws Exception {
         return roomRepository.existsByInviteCodeAndAndUserKeyAndDeletedIsFalse(inviteCode ,userKey);
+    }
+
+    @Transactional
+    @Override
+    public void delRoom(String inviteCode) throws Exception {
+        Room room = roomRepository.findByInviteCodeAndAndDeletedFalse(inviteCode).orElseThrow(() -> new RuntimeException("존재하지 않는 초대 코드입니다."));
+        room.delRoom();
     }
 
     private String codeGenerator() throws Exception {
