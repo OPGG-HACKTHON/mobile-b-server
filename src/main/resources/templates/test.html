@@ -79,7 +79,7 @@
     }
 
     function connect(){
-        let socket = new SockJS("http://gdok.site:3724/socket");
+        let socket = new SockJS("http://gdok.site/socket");
         stompClient = Stomp.over(socket);
         stompClient.connect({
             uuid : $('#uuid-input').val(),
