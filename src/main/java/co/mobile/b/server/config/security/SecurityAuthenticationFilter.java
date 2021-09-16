@@ -41,14 +41,14 @@ public class SecurityAuthenticationFilter extends OncePerRequestFilter {
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
 
-        log.info("SecurityAuthenticationFilter 시작 ====================================");
+        log.debug("SecurityAuthenticationFilter 시작 ====================================");
 
         String jwtToken = jwtTokenProvider.getJwtFromRequest(request);
 
         /* jwt 없는 경우는 프리패스 => permit all */
         if (StringUtils.isBlank(jwtToken) || !jwtTokenProvider.validateToken(jwtToken)) {
             filterChain.doFilter(request, response);
-            log.info("SecurityAuthenticationFilter 종료 ====================================");
+            log.debug("SecurityAuthenticationFilter 종료 ====================================");
             return;
         }
 
@@ -66,7 +66,7 @@ public class SecurityAuthenticationFilter extends OncePerRequestFilter {
             request.setAttribute("email", eamilFromToken);
             request.setAttribute("seq", jwtTokenProvider.getSeqFromToken(jwtToken));
 
-            log.info("SecurityAuthenticationFilter 종료 ====================================");
+            log.debug("SecurityAuthenticationFilter 종료 ====================================");
 
             filterChain.doFilter(request, response);
         } catch (Exception e) {

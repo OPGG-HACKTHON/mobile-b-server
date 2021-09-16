@@ -1,5 +1,7 @@
 package co.mobile.b.server.dto.response;
 
+import co.mobile.b.server.config.redis.UserConnectionInfo;
+import co.mobile.b.server.enums.MessageType;
 import co.mobile.b.server.enums.Position;
 import co.mobile.b.server.dto.request.AddMessageParam;
 import co.mobile.b.server.entity.Message;
@@ -45,7 +47,18 @@ public class MessageResult {
         this.positionName = Position.valueOf(positionType).getName();
         this.content = addMessageParam.getContent();
         this.messageType = addMessageParam.getMessageType().name();
-        this.createdAtStr = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss"));
+        this.createdAt = LocalDateTime.now();
+        setChatCreatedAtForStr();
+    }
+
+    public MessageResult(UserConnectionInfo userConnectionInfo, MessageType messageType, String content) {
+        this.userKey = userConnectionInfo.getUserKey();
+        this.positionType = userConnectionInfo.getPositionType();
+        this.positionName = Position.valueOf(positionType).getName();
+        this.content = content;
+        this.messageType = messageType.name();
+        this.createdAt = LocalDateTime.now();
+        setChatCreatedAtForStr();
     }
 
     private void setChatCreatedAtForStr() {

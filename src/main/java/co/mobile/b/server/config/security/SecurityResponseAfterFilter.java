@@ -21,7 +21,7 @@ public class SecurityResponseAfterFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        log.info("SecurityResponseAfterFilter 시작 ====================================");
+        log.debug("SecurityResponseAfterFilter 시작 ====================================");
 
         String jwtToken =  jwtTokenProvider.getJwtFromRequest(request);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -31,7 +31,7 @@ public class SecurityResponseAfterFilter extends OncePerRequestFilter {
              response.setHeader("refresh-auth", jwtTokenProvider.createToken(authentication));
         }
 
-        log.info("SecurityResponseAfterFilter 종료 ====================================");
+        log.debug("SecurityResponseAfterFilter 종료 ====================================");
         filterChain.doFilter(request, response);
     }
 }

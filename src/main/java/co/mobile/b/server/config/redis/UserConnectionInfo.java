@@ -10,7 +10,19 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserConnectionInfo {
-    private String userKey;
+    private String userName;
     private int positionType;
-    private String roomCode;
+    private String inviteCode;
+    private String userKey;
+    private String sessionId;
+    private Boolean isRoomHost;
+
+    public UserConnectionInfo(String userName, int positionType, String inviteCode, String userKey, String sessionId) {
+        this.userName = userName;
+        this.positionType = positionType;
+        this.inviteCode = inviteCode;
+        this.userKey = userKey;
+        this.sessionId = sessionId;
+        this.isRoomHost = false;
+    }
 }
