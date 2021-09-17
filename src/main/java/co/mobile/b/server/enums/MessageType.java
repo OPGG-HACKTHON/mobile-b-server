@@ -3,7 +3,9 @@ package co.mobile.b.server.enums;
 public enum MessageType {
     CHAT(""),
     JOIN(" 님이 입장하셨습니다."),
-    LEAVE(" 님이 퇴장하셨습니다.");
+    LEAVE(" 님이 퇴장하셨습니다."),
+    WARD(""),
+    ALARM("");
 
     private String message;
 
